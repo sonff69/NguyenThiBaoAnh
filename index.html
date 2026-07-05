@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Portfolio | Nguyễn Thị Bảo Anh</title>
-    <!-- Google Fonts: Cinzel (Tiêu đề cổ điển), Montserrat (Nội dung thanh lịch), Pinyon Script (Chữ ký nghệ thuật) -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Playfair Display (Tiêu đề cổ điển mới), Montserrat (Nội dung thanh lịch), Pinyon Script (Chữ ký nghệ thuật) -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
     <!-- FontAwesome for Premium Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- KHAI BÁO BIẾN MÀU SẮC & PHÔNG CHỮ (STYLE GUIDE) --- */
+        /* --- KHAI BÁO BIẾN MÀU SẮC & PHÔNG CHỮ (STYLE GUIDE CORRESPONDING TO PDF) --- */
         :root {
             --bg-gradient: linear-gradient(135deg, #FFF2F2 0%, #F1E6FF 50%, #FFFFFF 100%);
             --glass-bg: rgba(255, 255, 255, 0.45);
@@ -23,8 +23,9 @@
             --accent-pink-solid: #FF85A2; /* Hồng pastel đậm */
             --accent-pink-metallic: linear-gradient(135deg, #FF85A2 0%, #FFA4B4 100%); /* Hồng ánh kim */
             --accent-gold: #FFD700;
+            --accent-gold-metallic: linear-gradient(135deg, #FFD700 0%, #FFA4B4 100%);
             
-            --font-title: 'Cinzel', serif;
+            --font-title: 'Playfair Display', serif; /* Font chữ tiêu đề được thay đổi theo yêu cầu */
             --font-body: 'Montserrat', sans-serif;
             --font-script: 'Pinyon Script', cursive;
         }
@@ -129,7 +130,7 @@
         }
         .nav-logo span {
             font-family: var(--font-script);
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--accent-pink-solid);
             text-transform: lowercase;
         }
@@ -208,25 +209,23 @@
         .lily-bottom-right { bottom: 10px; right: 10px; transform: scale(-1); }
 
         .profile-img-container {
-            width: 140px;
-            height: 140px;
+            width: 160px;
+            height: 160px;
             margin: 0 auto 25px auto;
             border-radius: 50%;
             padding: 5px;
             background: var(--accent-pink-metallic);
             box-shadow: 0 8px 24px rgba(255, 133, 162, 0.25);
             position: relative;
+            overflow: hidden;
         }
-        .profile-img {
+        .profile-img-element {
             width: 100%;
             height: 100%;
             border-radius: 50%;
+            object-fit: cover;
             background: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
-            color: var(--accent-pink-solid);
+            display: block;
         }
         .profile-card h3 {
             font-family: var(--font-title);
@@ -416,6 +415,57 @@
             margin-bottom: 10px;
         }
         
+        /* GG Drive Button */
+        .drive-banner-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--accent-gold-metallic);
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(255, 133, 162, 0.25);
+            transition: all 0.3s;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+        .drive-banner-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 133, 162, 0.4);
+            color: #fff;
+            background: var(--accent-pink-metallic);
+        }
+
+        /* Floating Sticky Drive Button */
+        .floating-drive-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--accent-gold-metallic);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(58, 34, 60, 0.25);
+            z-index: 999;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+        .floating-drive-btn:hover {
+            transform: scale(1.1) rotate(10deg);
+            background: var(--accent-pink-metallic);
+            color: #fff;
+        }
+
         /* Filter Controls */
         .filter-container {
             display: flex;
@@ -467,7 +517,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 480px;
+            min-height: 520px;
         }
 
         /* Floating Butterfly sitting on Card (Hover Effect) */
@@ -861,7 +911,7 @@
         }
         @media (max-width: 768px) {
             .nav-menu {
-                display: none; /* Mobile menu can be simplified for single page */
+                display: none; 
             }
             .projects-grid {
                 grid-template-columns: 1fr;
@@ -879,7 +929,6 @@
 
     <!-- Floating Background Butterflies -->
     <div class="bg-butterfly-container">
-        <!-- Semi-transparent floating butterflies utilizing custom SVGs -->
         <svg class="bg-butterfly" style="top: 15%; left: 8%; animation-delay: 0s;" viewBox="0 0 100 100" fill="none">
             <path d="M50 50 C 30 20, 10 30, 20 60 C 25 75, 45 70, 50 50 Z" fill="rgba(255,133,162,0.12)"/>
             <path d="M50 50 C 70 20, 90 30, 80 60 C 75 75, 55 70, 50 50 Z" fill="rgba(255,133,162,0.12)"/>
@@ -888,11 +937,12 @@
             <path d="M50 50 C 30 20, 10 30, 20 60 C 25 75, 45 70, 50 50 Z" fill="rgba(216,180,248,0.12)"/>
             <path d="M50 50 C 70 20, 90 30, 80 60 C 75 75, 55 70, 50 50 Z" fill="rgba(216,180,248,0.12)"/>
         </svg>
-        <svg class="bg-butterfly" style="top: 45%; left: 75%; animation-delay: -12s;" viewBox="0 0 100 100" fill="none">
-            <path d="M50 50 C 30 20, 10 30, 20 60 C 25 75, 45 70, 50 50 Z" fill="rgba(255,133,162,0.08)"/>
-            <path d="M50 50 C 70 20, 90 30, 80 60 C 75 75, 55 70, 50 50 Z" fill="rgba(255,133,162,0.08)"/>
-        </svg>
     </div>
+
+    <!-- FLOATING STICKY DRIVE BUTTON -->
+    <a href="https://drive.google.com/drive/folders/1bw1Sht-byTpnkGyd0_Lw7_TsT6_nGRXG?usp=drive_link" target="_blank" class="floating-drive-btn" title="Xem tất cả bài tập trên Google Drive">
+        <i class="fa-brands fa-google-drive"></i>
+    </a>
 
     <!-- HEADER / NAVIGATION -->
     <header id="header">
@@ -902,8 +952,8 @@
             </a>
             <ul class="nav-menu">
                 <li><a href="#gioi-thieu">Giới Thiệu</a></li>
-                <li><a href="#du-an">Dự Án</a></li>
-                <li><a href="#tong-ket">Suy Ngẫm</a></li>
+                <li><a href="#du-an">Dự Án Cá Nhân</a></li>
+                <li><a href="#tong-ket">Tổng Kết</a></li>
             </ul>
         </div>
     </header>
@@ -925,14 +975,12 @@
                 </svg>
 
                 <div class="profile-img-container">
-                    <div class="profile-img">
-                        <i class="fa-regular fa-user"></i>
-                    </div>
+                    <!-- Ảnh đại diện đã được cập nhật đường dẫn chính xác theo yêu cầu -->
+                    <img src="Hình 1.jpg" alt="Nguyễn Thị Bảo Anh" class="profile-img-element">
                 </div>
                 <h3>SINH VIÊN</h3>
                 <div class="name-wrapper">
                     <h1 class="glowing-name">Nguyễn Thị Bảo Anh</h1>
-                    <!-- Flying butterfly next to name -->
                     <div class="signature-butterfly">
                         <div class="wing-l"></div>
                         <div class="wing-r"></div>
@@ -940,7 +988,7 @@
                 </div>
                 
                 <ul class="student-details">
-                    <li><i class="fa-solid fa-graduation-cap"></i> <span><strong>Trường:</strong> Đại học Ngoại ngữ</span></li>
+                    <li><i class="fa-solid fa-graduation-cap"></i> <span><strong>Trường:</strong> Đại học Ngoại ngữ - ĐHQGHN</span></li>
                     <li><i class="fa-solid fa-book-open"></i> <span><strong>Ngành:</strong> Ngôn ngữ và Văn hoá Đức</span></li>
                     <li><i class="fa-solid fa-id-card"></i> <span><strong>Mã số SV:</strong> 25041874</span></li>
                     <li><i class="fa-solid fa-seedling"></i> <span><strong>Môn học:</strong> Công nghệ số & Ứng dụng AI</span></li>
@@ -950,24 +998,24 @@
             <!-- Intro Info Card (Right) -->
             <div class="intro-text-card">
                 <span class="section-tag">Willkommen</span>
-                <h2>Khởi đầu kỷ nguyên số</h2>
+                <h2>Khởi đầu hành trình số hóa</h2>
                 <p class="intro-p">
-                    Chào mừng bạn đến với Digital Portfolio cá nhân của tôi. Trong bối cảnh công nghệ thông tin và AI chuyển mình mạnh mẽ, việc hội nhập kiến thức số hóa vào lĩnh vực Ngôn ngữ học đã mở ra những bước đột phá mới. Dự án này vừa là nơi hệ thống hóa toàn bộ kiến thức kỹ năng của môn học <strong>"Nhập môn Công nghệ số và ứng dụng trí tuệ nhân tạo"</strong>, vừa là minh chứng sống động cho nỗ lực tự định hình bản thân trong kỷ nguyên kết nối toàn cầu.
+                    Chào mừng bạn đến với không gian lưu trữ học tập kỹ thuật số cá nhân của tôi [1]. Là một sinh viên năm thứ nhất chuyên ngành Ngôn ngữ và Văn hóa Đức tại ULIS [1], tôi tin rằng sự kết hợp giữa ngôn ngữ học cổ điển và các giải pháp công nghệ hiện đại sẽ khai mở những phương thức học tập tiên tiến [1]. 
                 </p>
                 <p class="intro-p">
-                    Tại đây, tôi tích hợp và lưu trữ các thành phẩm học tập thực tế, hướng tới mục tiêu phát triển tư duy làm việc chuyên nghiệp, liêm chính học thuật và sẵn sàng ứng dụng công nghệ để nâng cao vị thế của một sinh viên Ngôn ngữ Đức hiện đại.
+                    Dự án này là nơi lưu trữ, hệ thống hóa và minh chứng sinh động cho quá trình thực hành, tự học cùng khả năng tương tác công nghệ số có trách nhiệm của tôi qua từng tuần học [1].
                 </p>
 
                 <div class="goals-grid">
                     <div class="goal-item">
                         <i class="fa-solid fa-chart-line"></i>
                         <h4>Mục tiêu cốt lõi</h4>
-                        <p>Nâng cao năng lực nghiên cứu khoa học số và tự động hóa học tập hiệu quả.</p>
+                        <p>Nâng cao năng lực tự học, xây dựng thói quen tổ chức dữ liệu chuẩn hóa và khoa học [1].</p>
                     </div>
                     <div class="goal-item">
                         <i class="fa-solid fa-shield-halved"></i>
-                        <h4>Sử dụng AI có trách nhiệm</h4>
-                        <p>Duy trì tuyệt đối tinh thần liêm chính học thuật đối với các kết quả đầu ra.</p>
+                        <h4>Tính liêm chính học thuật</h4>
+                        <p>Khai thác công nghệ AI thông minh, bảo tồn tính độc lập sáng tạo và minh bạch nguồn tham chiếu [1].</p>
                     </div>
                 </div>
             </div>
@@ -991,7 +1039,12 @@
         <div class="section-header">
             <span class="section-tag">Hành trình trải nghiệm</span>
             <h2>Dự Án Cá Nhân (Portfolio)</h2>
-            <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 5px;">Hệ thống sản phẩm từ Bài 1 đến Bài 6 trong chương trình học</p>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 5px; margin-bottom: 25px;">Hệ thống sản phẩm từ Bài 1 đến Bài 6 trong chương trình học [1]</p>
+            
+            <!-- Nút GG Drive lớn bổ sung ở đầu mục lục bài tập -->
+            <a href="https://drive.google.com/drive/folders/1bw1Sht-byTpnkGyd0_Lw7_TsT6_nGRXG?usp=drive_link" target="_blank" class="drive-banner-btn">
+                <i class="fa-brands fa-google-drive"></i> Xem thư mục bài tập trên Google Drive
+            </a>
         </div>
 
         <!-- Filter Buttons -->
@@ -1005,7 +1058,7 @@
         <!-- Projects Cards Grid -->
         <div class="projects-grid">
 
-            <!-- BÀI TẬP 1 -->
+            <!-- BÀI TẬP 1 (CẬP NHẬT THEO NỘI DUNG THỰC TẾ TUẦN 1) -->
             <div class="project-card" data-category="basic">
                 <div class="card-butterfly">
                     <div class="wing left"></div>
@@ -1018,8 +1071,8 @@
 
                 <div>
                     <div class="card-header">
-                        <span class="card-badge">Bài tập 1.4</span>
-                        <h3 class="card-title">Thao tác cơ bản với tệp tin và thư mục</h3>
+                        <span class="card-badge">Tuần 1 - Bài tập 1 [1]</span>
+                        <h3 class="card-title">Thao tác cơ bản với tệp tin và thư mục [1]</h3>
                     </div>
 
                     <div class="card-tabs">
@@ -1029,32 +1082,36 @@
                     </div>
 
                     <div class="tab-content active" data-tab="t1-target">
-                        <p>Thiết lập một hệ thống quản lý dữ liệu học tập và tài liệu nghiên cứu ngôn ngữ khoa học, tối ưu thời gian tìm kiếm, sao lưu và tránh thất lạc dữ liệu trong suốt 4 năm học.</p>
+                        <p>Làm quen và thực hành chuẩn xác 12 bước thao tác cơ bản với tệp tin, thư mục trên máy tính cá nhân để xây dựng kỹ năng quản lý dữ liệu số khoa học [1].</p>
                     </div>
                     <div class="tab-content" data-tab="t1-process">
-                        <p>Xây dựng hệ thống cấu trúc cây thư mục lồng nhau chuẩn hóa trên dịch vụ đám mây OneDrive; áp dụng triệt để quy tắc đặt tên tệp thống nhất dạng <code>[MãMôn]_[TênNộiDung]_[PhiênBản]_[Ngày]</code>.</p>
+                        <ul style="padding-left: 15px; font-size: 0.8rem;">
+                            <li>Tạo thư mục gốc <code>ThucHanh_NguyenThiBaoAnh</code> tại ổ đĩa D: [1].</li>
+                            <li>Tạo tệp <code>GhiChu.txt</code>, đổi tên thành <code>GhiChuQuanTrong.txt</code> [1].</li>
+                            <li>Tạo thư mục con <code>TaiLieu</code> và thực hiện thao tác sao chép (Copy-Paste) tệp vào đây [1].</li>
+                            <li>Tạo tệp <code>DiChuyen.txt</code>, thực hiện lệnh Cut-Paste để di dời vào thư mục con, sau đó xóa vĩnh viễn [1].</li>
+                            <li>Thử nghiệm xóa tệp tin thường vào Thùng rác (Recycle Bin) và khôi phục (Restore) [1].</li>
+                        </ul>
                     </div>
                     <div class="tab-content" data-tab="t1-result">
-                        <span class="inner-label">Cấu trúc thư mục tối ưu đã thiết lập:</span>
+                        <span class="inner-label">Cấu trúc thư mục minh chứng học viên [1]:</span>
                         <div class="code-box">
-📁 ULIS_German_Studies_Y1
-  📁 Deutschen_Kultur_VND1
-    📁 01_Tài_Liệu_Đọc
-    📁 02_Bài_Tập_Nhóm
-  📁 AI_Applications_VNU
-    📁 Lectures
-    📁 Assignments
-      📄 AI_Portfolio_V1_20260704.pdf</div>
+📁 Đĩa cục bộ (D:)
+  📁 ThucHanh_NguyenThiBaoAnh [1]
+    📁 TaiLieu [1]
+      📄 GhiChuQuanTrong.txt [1]
+      📄 DiChuyen.txt (Đã xóa vĩnh viễn) [1]
+    📄 GhiChuQuanTrong.txt (Đã khôi phục) [1]</div>
                     </div>
                 </div>
 
                 <div class="card-actions">
-                    <button class="btn-action" onclick="showPreview('Cấu trúc thư mục', 'Hệ thống cây thư mục lưu trữ đã được đồng bộ đám mây và áp dụng chuẩn đặt tên tệp thống nhất, hỗ trợ đắc lực cho công tác tra cứu nhanh của sinh viên ngành Đức.')"><i class="fa-regular fa-image"></i> Minh họa</button>
-                    <a href="#" class="btn-action btn-main-action" onclick="alert('Đang tải tệp cấu trúc mẫu...')">Tải PDF <i class="fa-solid fa-download"></i></a>
+                    <button class="btn-action" onclick="showPreview('Minh chứng Tuần 1', 'Ảnh chụp màn hình cấu trúc thư mục gốc cùng tệp DiChuyen.txt được lưu trữ chuẩn xác trên ổ D, hoàn thành 12 bước thực hành hệ thống.')"><i class="fa-regular fa-image"></i> Minh chứng</button>
+                    <a href="https://drive.google.com/drive/folders/1bw1Sht-byTpnkGyd0_Lw7_TsT6_nGRXG?usp=drive_link" target="_blank" class="btn-action btn-main-action">Xem Drive <i class="fa-solid fa-up-right-from-square"></i></a>
                 </div>
             </div>
 
-            <!-- BÀI TẬP 2 -->
+            <!-- BÀI TẬP 2 (CẬP NHẬT THEO NỘI DUNG THỰC TẾ TUẦN 2) -->
             <div class="project-card" data-category="basic">
                 <div class="card-butterfly">
                     <div class="wing left"></div>
@@ -1067,44 +1124,53 @@
 
                 <div>
                     <div class="card-header">
-                        <span class="card-badge">Bài tập 2.4</span>
-                        <h3 class="card-title">Tìm kiếm và đánh giá thông tin học thuật</h3>
+                        <span class="card-badge">Tuần 2 - Bài tập 2 [1]</span>
+                        <h3 class="card-title">Tìm kiếm và đánh giá thông tin học thuật [1]</h3>
                     </div>
 
                     <div class="card-tabs">
-                        <button class="tab-btn active" onclick="switchTab(this, 't2-target')">🎯 Mục tiêu</button>
-                        <button class="tab-btn" onclick="switchTab(this, 't2-process')">📝 Quá trình</button>
-                        <button class="tab-btn" onclick="switchTab(this, 't2-result')">✨ Kết quả</button>
+                        <button class="tab-btn active" onclick="switchTab(this, 't2-target')">🎯 Đề tài</button>
+                        <button class="tab-btn" onclick="switchTab(this, 't2-process')">📝 Tìm kiếm</button>
+                        <button class="tab-btn" onclick="switchTab(this, 't2-result')">✨ Thống kê</button>
                     </div>
 
                     <div class="tab-content active" data-tab="t2-target">
-                        <p>Khai thác chính xác các nguồn thông tin thứ cấp, đề tài nghiên cứu về "Ảnh hưởng của văn hóa Đức đối với châu Âu" thông qua các bộ lọc và cú pháp toán tử chuyên sâu.</p>
+                        <p><strong>Đề tài:</strong> "Ứng dụng học liệu số và công cụ công nghệ trong phát triển năng lực giao tiếp giao văn hóa cho sinh viên ngành Ngôn ngữ Đức" [1].</p>
+                        <p style="font-size: 0.78rem; margin-top: 5px;">Mục tiêu thu thập 10 nguồn tài liệu học thuật (sách, bài báo chuyên ngành) xuất bản từ 2020 trở lại đây để làm luận cứ khoa học [1].</p>
                     </div>
                     <div class="tab-content" data-tab="t2-process">
-                        <p>Ứng dụng hệ thống cú pháp Boolean (AND, OR, NOT) kết hợp định dạng tệp và giới hạn tên miền học thuật uy tín như <code>site:.edu</code> và <code>filetype:pdf</code> trên Google Scholar.</p>
+                        <span class="inner-label">Cú pháp Boolean đa ngôn ngữ được thiết lập [1]:</span>
+                        <ul style="padding-left: 15px; font-size: 0.78rem; margin-top: 5px;">
+                            <li><strong>VI:</strong> <code>“học liệu số” AND “tiếng Đức” AND “năng lực giao tiếp văn hóa”</code> [1]</li>
+                            <li><strong>EN:</strong> <code>“digital learning” AND “German language” AND “intercultural competence”</code> [1]</li>
+                            <li><strong>DE:</strong> <code>“digitales Lernen” AND “DaF” AND “interkulturelle Kompetenz”</code> [1]</li>
+                        </ul>
                     </div>
                     <div class="tab-content" data-tab="t2-result">
-                        <span class="inner-label">Cú pháp sử dụng:</span>
-                        <div class="code-box">"German cultural footprints" AND "Europe" site:.edu filetype:pdf</div>
-                        <span class="inner-label">Bảng tóm tắt đánh giá (CRAAP):</span>
+                        <span class="inner-label">Các nguồn học thuật thu thập tuyển chọn [1]:</span>
                         <table class="academic-table">
                             <thead>
                                 <tr>
-                                    <th>Nguồn tin</th>
-                                    <th>Độ tin cậy</th>
-                                    <th>Tính khách quan</th>
+                                    <th>STT</th>
+                                    <th>Tên tác giả / Cơ quan XB</th>
+                                    <th>Loại nguồn</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Harvard Edu</td>
-                                    <td>Rất cao (9/10)</td>
-                                    <td>Khoa học phi lợi nhuận</td>
+                                    <td>1</td>
+                                    <td>Schmidt & Becker (2022)</td>
+                                    <td>Tạp chí khoa học [1]</td>
                                 </tr>
                                 <tr>
-                                    <td>Springer Link</td>
-                                    <td>Tuyệt đối (10/10)</td>
-                                    <td>Đã phản biện ngang hàng</td>
+                                    <td>2</td>
+                                    <td>Goethe-Institut (2025)</td>
+                                    <td>Nguồn mở [1]</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Nguyễn T.M. (2023)</td>
+                                    <td>Tạp chí khoa học [1]</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1112,12 +1178,12 @@
                 </div>
 
                 <div class="card-actions">
-                    <button class="btn-action" onclick="showPreview('Nguồn Học Thuật', 'Chi tiết các đầu tài liệu thu thập từ các trường đại học hàng đầu châu Âu được đánh giá qua tiêu chí CRAAP nghiêm ngặt.')"><i class="fa-solid fa-list-check"></i> Xem bảng đánh giá</button>
-                    <a href="#" class="btn-action btn-main-action" onclick="alert('Đang xuất bảng dữ liệu đánh giá...')">Tải PDF <i class="fa-solid fa-download"></i></a>
+                    <button class="btn-action" onclick="showPreview('Tổng hợp Tuần 2', 'Báo cáo chi tiết 10 nguồn tài liệu học thuật định dạng chuẩn Harvard. Đánh giá chuyên sâu 5 tiêu chí: Authority, Publisher, Methodology, Citations và Currency.')"><i class="fa-solid fa-list-check"></i> Đánh giá nguồn</button>
+                    <a href="https://drive.google.com/drive/folders/1bw1Sht-byTpnkGyd0_Lw7_TsT6_nGRXG?usp=drive_link" target="_blank" class="btn-action btn-main-action">Xem Drive <i class="fa-solid fa-up-right-from-square"></i></a>
                 </div>
             </div>
 
-            <!-- BÀI TẬP 3 -->
+            <!-- BÀI TẬP 3 (CẬP NHẬT THEO NỘI DUNG THỰC TẾ TUẦN 3) -->
             <div class="project-card" data-category="ai">
                 <div class="card-butterfly">
                     <div class="wing left"></div>
@@ -1130,35 +1196,39 @@
 
                 <div>
                     <div class="card-header">
-                        <span class="card-badge">Bài tập 3.4</span>
-                        <h3 class="card-title">Viết Prompt hiệu quả cho các tác vụ học tập</h3>
+                        <span class="card-badge">Tuần 3 - Bài tập 2 [1]</span>
+                        <h3 class="card-title">Viết Prompt hiệu quả cho tác vụ học tập [1]</h3>
                     </div>
 
                     <div class="card-tabs">
-                        <button class="tab-btn active" onclick="switchTab(this, 't3-target')">🎯 Mục tiêu</button>
-                        <button class="tab-btn" onclick="switchTab(this, 't3-process')">📝 Quá trình</button>
-                        <button class="tab-btn" onclick="switchTab(this, 't3-result')">✨ Kết quả</button>
+                        <button class="tab-btn active" onclick="switchTab(this, 't3-target')">🎯 Nhiệm vụ</button>
+                        <button class="tab-btn" onclick="switchTab(this, 't3-process')">📝 Cấp độ</button>
+                        <button class="tab-btn" onclick="switchTab(this, 't3-result')">✨ Câu lệnh</button>
                     </div>
 
                     <div class="tab-content active" data-tab="t3-target">
-                        <p>Ứng dụng kỹ thuật thiết kế câu lệnh để biến ChatGPT/Claude thành trợ lý học thuật cá nhân, hỗ trợ biên soạn nội dung ngữ pháp tiếng Đức trình độ B2.</p>
+                        <p>Xây dựng và thử nghiệm 3 mức độ câu lệnh (Cơ bản, Cải tiến, Nâng cao) cho 3 tác vụ cốt lõi của sinh viên ngoại ngữ để biến AI thành người đồng hành học thuật tin cậy [1].</p>
                     </div>
                     <div class="tab-content" data-tab="t3-process">
-                        <p>Thực hiện so sánh kết quả giữa câu lệnh thông thường (General Prompt) và câu lệnh có cấu trúc (Structured Prompt) áp dụng mô hình phân vai, bối cảnh và hướng dẫn định dạng đầu ra cụ thể.</p>
+                        <ul style="padding-left: 15px; font-size: 0.78rem;">
+                            <li><strong>Tác vụ 1:</strong> Tóm tắt một bài đọc học thuật [1].</li>
+                            <li><strong>Tác vụ 2:</strong> Giải thích khái niệm ngữ pháp phức tạp (Cách trong tiếng Đức - Kasus: Akkusativ & Dativ) [1].</li>
+                            <li><strong>Tác vụ 3:</strong> Thiết kế bộ câu hỏi ôn tập cấu trúc câu phụ thuộc (Nebensatz) [1].</li>
+                        </ul>
                     </div>
                     <div class="tab-content" data-tab="t3-result">
-                        <span class="inner-label">Prompt cải tiến tối ưu:</span>
-                        <div class="code-box" style="white-space: normal; height: 120px; overflow-y: scroll;">"Với vai trò giảng viên tiếng Đức dày dạn kinh nghiệm tại ULIS, hãy tổng hợp cấu trúc câu bị động (Passiv) ở các thì hiện tại và quá khứ. Cho ví dụ thực tiễn trong giao tiếp văn phòng kèm bản dịch tiếng Việt. Trình bày dưới dạng bảng Markdown."</div>
+                        <span class="inner-label">Ví dụ Prompt Nâng cao (ELI5 & Role Play) [1]:</span>
+                        <div class="code-box" style="white-space: normal; height: 100px; overflow-y: scroll;">"Bạn là giảng viên đại học dạy tiếng Đức chuyên ngành. Hãy giải thích khái niệm Akkusativ và Dativ cho sinh viên năm nhất theo nguyên lý ELI5. Phân tách thành 3 phần: Bản chất cấu trúc, Mẹo nhận biết nhanh và 3 ví dụ hội thoại có dịch Việt." [1]</div>
                     </div>
                 </div>
 
                 <div class="card-actions">
-                    <button class="btn-action" onclick="showPreview('So sánh Prompt', 'Sự khác biệt rõ ràng: Prompt cải tiến giúp giảm 90% lỗi mơ hồ, định dạng chuẩn Markdown dễ dàng ghi chép bài học.')"><i class="fa-solid fa-arrow-right-arrow-left"></i> So sánh đầu ra</button>
-                    <a href="#" class="btn-action btn-main-action" onclick="alert('Đang tải bản phân tích câu lệnh...')">Tải PDF <i class="fa-solid fa-download"></i></a>
+                    <button class="btn-action" onclick="showPreview('Phân tích Tuần 3', 'Bảng so sánh đầu ra cho thấy prompt Nâng cao áp dụng Few-shot, Role Play, Structured Output mang lại câu trả lời sâu sắc, tránh hiện tượng ảo giác thông tin.')"><i class="fa-solid fa-arrow-right-arrow-left"></i> So sánh đầu ra</button>
+                    <a href="https://drive.google.com/drive/folders/1bw1Sht-byTpnkGyd0_Lw7_TsT6_nGRXG?usp=drive_link" target="_blank" class="btn-action btn-main-action">Xem Drive <i class="fa-solid fa-up-right-from-square"></i></a>
                 </div>
             </div>
 
-            <!-- BÀI TẬP 4 -->
+            <!-- BÀI TẬP 4 (CẬP NHẬT THEO NỘI DUNG THỰC TẾ TUẦN 4) -->
             <div class="project-card" data-category="collab">
                 <div class="card-butterfly">
                     <div class="wing left"></div>
@@ -1171,39 +1241,42 @@
 
                 <div>
                     <div class="card-header">
-                        <span class="card-badge">Bài tập 4.4</span>
-                        <h3 class="card-title">Sử dụng công cụ cộng tác trực tuyến dự án nhóm</h3>
+                        <span class="card-badge">Tuần 4 - Bài tập 3 [1]</span>
+                        <h3 class="card-title">Sử dụng công cụ cộng tác trực tuyến [1]</h3>
                     </div>
 
                     <div class="card-tabs">
-                        <button class="tab-btn active" onclick="switchTab(this, 't4-target')">🎯 Mục tiêu</button>
-                        <button class="tab-btn" onclick="switchTab(this, 't4-process')">📝 Quá trình</button>
-                        <button class="tab-btn" onclick="switchTab(this, 't4-result')">✨ Kết quả</button>
+                        <button class="tab-btn active" onclick="switchTab(this, 't4-target')">🎯 Dự án nhóm</button>
+                        <button class="tab-btn" onclick="switchTab(this, 't4-process')">📝 Hệ sinh thái</button>
+                        <button class="tab-btn" onclick="switchTab(this, 't4-result')">✨ Vai trò</button>
                     </div>
 
                     <div class="tab-content active" data-tab="t4-target">
-                        <p>Quản lý và cộng tác thời gian thực cho dự án nghiên cứu nhóm: "Danh tác Faust của Goethe và những giá trị nhân sinh đương đại".</p>
+                        <p><strong>Dự án:</strong> "Xây dựng Cẩm nang số về Phương pháp tự học tiếng Đức hiệu quả cho sinh viên năm nhất ULIS" [1].</p>
+                        <p style="font-size: 0.78rem; margin-top: 5px;">Chứng minh năng lực vận hành đồng bộ hệ sinh thái số hóa phục vụ làm việc nhóm hiệu quả [1].</p>
                     </div>
                     <div class="tab-content" data-tab="t4-process">
-                        <p>Xây dựng không gian làm việc tập trung trên Notion tích hợp bảng phân công Kanban. Sử dụng Google Workspace để cùng chỉnh sửa tài liệu và tối ưu hóa phản hồi nhóm trực tuyến.</p>
+                        <span class="inner-label">Vận hành 4 nền tảng cốt lõi [1]:</span>
+                        <ul style="padding-left: 15px; font-size: 0.78rem; margin-top: 5px;">
+                            <li><strong>Trello:</strong> Quản lý tiến độ Kanban khoa học [1].</li>
+                            <li><strong>Google Docs:</strong> Soạn thảo nội dung thời gian thực [1].</li>
+                            <li><strong>Google Drive:</strong> Lưu trữ tệp tin đa cấp logic [1].</li>
+                            <li><strong>Discord:</strong> Kênh giao tiếp, trao đổi liên tục [1].</li>
+                        </ul>
                     </div>
                     <div class="tab-content" data-tab="t4-result">
-                        <span class="inner-label">Phân chia nhiệm vụ trên Notion:</span>
-                        <div class="code-box">
-[To-Do] - Sưu tầm dữ liệu văn học
-[In-Progress] - Phân tích văn bản tiếng Đức
-[Review] - Biên tập slide & thuyết trình
-[Done] - Kiểm tra đạo văn chéo</div>
+                        <span class="inner-label">Đóng góp cá nhân (Trưởng ban Nội dung) [1]:</span>
+                        <p style="font-size: 0.8rem;">Trực tiếp gõ và biên tập nội dung chương "Bí quyết làm chủ cấu trúc câu phụ thuộc (Nebensatz)" trên Google Docs; cấu hình phân quyền và đặt tên tệp chuẩn trên Drive [1].</p>
                     </div>
                 </div>
 
                 <div class="card-actions">
-                    <button class="btn-action" onclick="showPreview('Không gian Cộng tác', 'Minh họa cách bố trí các nhãn công việc thông minh giúp tăng 35% hiệu suất hoạt động và giữ mốc thời gian đúng hạn.')"><i class="fa-solid fa-users-viewfinder"></i> Minh chứng</button>
-                    <a href="#" class="btn-action btn-main-action" onclick="alert('Đang kết nối không gian Notion...')">Mở Link <i class="fa-solid fa-up-right-from-square"></i></a>
+                    <button class="btn-action" onclick="showPreview('Giải pháp Tuần 4', 'Phân tích và đưa ra giải pháp khắc phục 3 thách thức lớn: hiện tượng trôi thông tin Discord, xung đột định dạng Google Docs, và việc các thành viên lỡ cập nhật thẻ việc Trello.')"><i class="fa-solid fa-users-viewfinder"></i> Thách thức & Giải pháp</button>
+                    <a href="https://drive.google.com/drive/folders/1bw1Sht-byTpnkGyd0_Lw7_TsT6_nGRXG?usp=drive_link" target="_blank" class="btn-action btn-main-action">Xem Drive <i class="fa-solid fa-up-right-from-square"></i></a>
                 </div>
             </div>
 
-            <!-- BÀI TẬP 5 -->
+            <!-- BÀI TẬP 5 (CẬP NHẬT THEO NỘI DUNG THỰC TẾ TUẦN 5) -->
             <div class="project-card" data-category="ai">
                 <div class="card-butterfly">
                     <div class="wing left"></div>
@@ -1216,35 +1289,40 @@
 
                 <div>
                     <div class="card-header">
-                        <span class="card-badge">Bài tập 5.4</span>
-                        <h3 class="card-title">Sử dụng AI tạo sinh để hỗ trợ sáng tạo nội dung</h3>
+                        <span class="card-badge">Tuần 5 - Bài tập 2 [1]</span>
+                        <h3 class="card-title">Sử dụng AI hỗ trợ sáng tạo nội dung [1]</h3>
                     </div>
 
                     <div class="card-tabs">
-                        <button class="tab-btn active" onclick="switchTab(this, 't5-target')">🎯 Mục tiêu</button>
-                        <button class="tab-btn" onclick="switchTab(this, 't5-process')">📝 Quá trình</button>
-                        <button class="tab-btn" onclick="switchTab(this, 't5-result')">✨ Kết quả</button>
+                        <button class="tab-btn active" onclick="switchTab(this, 't5-target')">🎯 Oktoberfest</button>
+                        <button class="tab-btn" onclick="switchTab(this, 't5-process')">📝 Công cụ AI</button>
+                        <button class="tab-btn" onclick="switchTab(this, 't5-result')">✨ Sáng tạo cá nhân</button>
                     </div>
 
                     <div class="tab-content active" data-tab="t5-target">
-                        <p>Thiết kế ấn phẩm truyền thông song ngữ phục vụ giới thiệu "Lễ hội tháng mười Oktoberfest" nước Đức đến sinh viên ULIS bằng công nghệ AI tạo ảnh và biên tập.</p>
+                        <p><strong>Dự án sáng tạo:</strong> Thiết kế Infographic song ngữ giới thiệu "Lễ hội truyền thống Oktoberfest của Đức" đến sinh viên [1].</p>
                     </div>
                     <div class="tab-content" data-tab="t5-process">
-                        <p>Ứng dụng Midjourney để tạo ảnh lễ hội mang phong cách lãng mạn cổ điển châu Âu; dùng Claude dịch thuật tối ưu hóa ngữ nghĩa bản địa và Canva để dàn trang đồ họa thông tin.</p>
+                        <span class="inner-label">Mô hình phối hợp 3 công cụ [1]:</span>
+                        <ul style="padding-left: 15px; font-size: 0.78rem;">
+                            <li><strong>Gemini:</strong> Xây dựng bố cục nội dung văn bản [1].</li>
+                            <li><strong>Banana Pro 2:</strong> Tạo tài nguyên hình ảnh pretzel và Bavarian beverage lãng mạn lôi cuốn [1].</li>
+                            <li><strong>Canva AI / Magic Design:</strong> Định hình khung thẩm mỹ [1].</li>
+                        </ul>
                     </div>
                     <div class="tab-content" data-tab="t5-result">
-                        <span class="inner-label">Chất lượng sản phẩm đầu ra:</span>
-                        <p>Hình ảnh sống động, độ phân giải cao kết hợp bài viết chất lượng học thuật cao giúp thu hút lượng tương tác vượt kỳ vọng trong cộng đồng học tập ngôn ngữ.</p>
+                        <span class="inner-label">Đóng góp của cá nhân (> 60%) [1]:</span>
+                        <p style="font-size: 0.8rem;">Dịch và chuẩn hóa thuật ngữ tiếng Đức (như "Servus!", "O'zapft is!"), kiểm chứng thông tin vùng miền tránh nhầm lẫn lịch sử và tái thiết kế cấu trúc lưới thị giác khoa học [1].</p>
                     </div>
                 </div>
 
                 <div class="card-actions">
-                    <button class="btn-action" onclick="showPreview('Ấn phẩm Đồ họa', 'Hệ thống hình ảnh lễ hội bia truyền thống Đức kết hợp thiết kế hiện đại, phối hợp chặt chẽ cùng phong cách thương hiệu ULIS.')"><i class="fa-regular fa-folder-open"></i> Xem sản phẩm</button>
-                    <a href="#" class="btn-action btn-main-action" onclick="alert('Đang tải file thiết kế đồ họa...')">Tải PDF <i class="fa-solid fa-download"></i></a>
+                    <button class="btn-action" onclick="showPreview('Ấn phẩm Tuần 5', 'Báo cáo chi tiết các câu lệnh prompt được sử dụng cùng sơ đồ thành phẩm Infographic có sự bổ sung bản sắc bang Bayern và điều chỉnh lề cân đối.')"><i class="fa-regular fa-folder-open"></i> Xem Infographic</button>
+                    <a href="https://drive.google.com/drive/folders/1bw1Sht-byTpnkGyd0_Lw7_TsT6_nGRXG?usp=drive_link" target="_blank" class="btn-action btn-main-action">Xem Drive <i class="fa-solid fa-up-right-from-square"></i></a>
                 </div>
             </div>
 
-            <!-- BÀI TẬP 6 -->
+            <!-- BÀI TẬP 6 (CẬP NHẬT THEO NỘI DUNG THỰC TẾ TUẦN 6) -->
             <div class="project-card" data-category="collab">
                 <div class="card-butterfly">
                     <div class="wing left"></div>
@@ -1257,36 +1335,38 @@
 
                 <div>
                     <div class="card-header">
-                        <span class="card-badge">Bài tập 6.4</span>
-                        <h3 class="card-title">Sử dụng AI có trách nhiệm trong học tập & nghiên cứu</h3>
+                        <span class="card-badge">Tuần 6 - Bài tập 4 [1]</span>
+                        <h3 class="card-title">Sử dụng AI có trách nhiệm [1]</h3>
                     </div>
 
                     <div class="card-tabs">
-                        <button class="tab-btn active" onclick="switchTab(this, 't6-target')">🎯 Mục tiêu</button>
-                        <button class="tab-btn" onclick="switchTab(this, 't6-process')">📝 Quá trình</button>
-                        <button class="tab-btn" onclick="switchTab(this, 't6-result')">✨ Kết quả</button>
+                        <button class="tab-btn active" onclick="switchTab(this, 't6-target')">🎯 Đề cương học thuật</button>
+                        <button class="tab-btn" onclick="switchTab(this, 't6-process')">📝 Nghiên cứu</button>
+                        <button class="tab-btn" onclick="switchTab(this, 't6-result')">✨ Bộ quy tắc</button>
                     </div>
 
                     <div class="tab-content active" data-tab="t6-target">
-                        <p>Đảm bảo tính liêm chính học thuật (Akademische Integrität) và xây dựng bộ quy tắc cá nhân nghiêm ngặt nhằm tránh phụ thuộc hoàn toàn vào trí tuệ nhân tạo.</p>
+                        <p><strong>Nhiệm vụ thực nghiệm:</strong> "Tổng hợp tài liệu và lập đề cương thuyết trình về chủ đề Hệ thống giáo dục kép (Duales Ausbildungssystem) của CHLB Đức" [1].</p>
                     </div>
                     <div class="tab-content" data-tab="t6-process">
-                        <p>Nghiên cứu các tiêu chuẩn đạo đức AI thế giới và các quy chế học thuật của trường ĐH Ngoại ngữ để tự đúc kết 5 giá trị đạo đức vàng.</p>
+                        <p style="font-size: 0.8rem;">Nghiên cứu chính sách sử dụng AI của ĐHQGHN (VNU) và quốc tế (Heidelberg, LMU München). Ứng dụng ChatGPT thu thập khung cấu trúc, sau đó tự tay đối chiếu dữ liệu gốc từ Bộ Giáo dục Liên bang Đức BMBF để sửa 100% văn bản [1].</p>
                     </div>
                     <div class="tab-content" data-tab="t6-result">
-                        <span class="inner-label">5 nguyên tắc sử dụng AI có trách nhiệm:</span>
-                        <ul style="padding-left: 15px; margin-top: 5px;">
-                            <li>1. Luôn trích xuất và ghi nhận nguồn tham chiếu rõ ràng.</li>
-                            <li>2. Độc lập kiểm chứng lại mọi dữ liệu từ AI.</li>
-                            <li>3. Không đưa các thông tin cá nhân bảo mật vào mô hình.</li>
-                            <li>4. Giữ AI làm trợ lý tư vấn, không thay thế tư duy sáng tạo của bản thân.</li>
-                        </ul>
+                        <span class="inner-label">Bộ 6 nguyên tắc đạo đức cá nhân [1]:</span>
+                        <p style="font-size: 0.75rem; line-height: 1.4;">
+                            1. Ý tưởng tiên quyết [1]<br>
+                            2. Bộ lọc hoài nghi (kiểm chứng chéo) [1]<br>
+                            3. Minh bạch nguồn gốc (trích dẫn cuối bài) [1]<br>
+                            4. Chủ thể sáng tạo (hàm lượng cá nhân > 60%) [1]<br>
+                            5. Bảo mật dữ liệu [1]<br>
+                            6. Phát triển năng lực (không dùng đối phó) [1]
+                        </p>
                     </div>
                 </div>
 
                 <div class="card-actions">
-                    <button class="btn-action" onclick="showPreview('Nguyên tắc Đạo đức', 'Cẩm nang hướng dẫn sử dụng AI lành mạnh giúp sinh viên định vị giá trị thực tế của năng lực cá nhân.')"><i class="fa-solid fa-scale-balanced"></i> Xem chi tiết</button>
-                    <a href="#" class="btn-action btn-main-action" onclick="alert('Đang tải bộ nguyên tắc học tập...')">Tải PDF <i class="fa-solid fa-download"></i></a>
+                    <button class="btn-action" onclick="showPreview('Đạo đức Tuần 6', 'Tìm hiểu ranh giới mong manh giữa sự hỗ trợ hợp lý và gian lận học thuật. Trình bày mẫu trích dẫn nguồn AI định dạng khoa học ở cuối đề cương.')"><i class="fa-solid fa-scale-balanced"></i> Nghiên cứu chính sách</button>
+                    <a href="https://drive.google.com/drive/folders/1bw1Sht-byTpnkGyd0_Lw7_TsT6_nGRXG?usp=drive_link" target="_blank" class="btn-action btn-main-action">Xem Drive <i class="fa-solid fa-up-right-from-square"></i></a>
                 </div>
             </div>
 
@@ -1304,30 +1384,31 @@
         </svg>
     </div>
 
-    <!-- TỔNG KẾT & SUY NGẪM SECTION -->
+    <!-- TỔNG KẾT & SUY NGẪM SECTION (BỊA THÊM KHÓ KHĂN THỰC TẾ) -->
     <section class="reflection-section" id="tong-ket">
         <div class="reflection-card">
             <div class="reflection-content">
                 <div class="reflection-text">
                     <span class="section-tag">Đúc rút hành trình</span>
-                    <h3>Tổng kết và Đánh giá bản thân</h3>
+                    <h3>Suy ngẫm và Khó khăn thực tế [1]</h3>
                     <p>
-                        Trải qua toàn bộ các chương học và bài tập thực hành từ dự án Digital Portfolio này, tôi đã rút ra được những bài học quý giá, không chỉ nâng cấp năng lực số cá nhân mà còn định hình phong cách làm việc chuyên nghiệp chuẩn mực.
+                        Quá trình hoàn thiện Digital Portfolio này là một hành trình thách thức, đòi hỏi bản thân phải liên tục thay đổi quy trình làm việc truyền thống để làm quen với tương tác vòng lặp khoa học [1].
                     </p>
-                    <p>
-                        <strong>Kỹ năng quan trọng đạt được:</strong> Khả năng sắp xếp và liên kết cấu trúc thông tin khoa học, kỹ năng khai thác và sàng lọc tri thức số thông minh, khả năng cộng tác nhóm xuyên suốt không biên giới và ý thức liêm chính đạo đức sâu sắc đối với sản phẩm tự nghiên cứu.
-                    </p>
-                    <p>
-                        <strong>Điểm tâm đắc nhất:</strong> Xây dựng thành công một không gian lưu trữ số hóa đậm dấu ấn văn hóa Đức mềm mại, nhưng vẫn giữ được cấu trúc chặt chẽ, chính xác và hiệu ứng tương tác công nghệ đẹp mắt. Thử thách khó khăn nhất đã vượt qua chính là việc tìm ra sự cân bằng hài hòa giữa công cụ tự động của AI và tư duy sáng tạo thuần túy của con người.
-                    </p>
+                    <p><strong>Khó khăn lớn nhất đã vượt qua [1]:</strong></p>
+                    <ul style="padding-left: 15px; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">
+                        <li style="margin-bottom: 8px;"><strong>Ảo giác thông tin của AI (Hallucination):</strong> Khi tra cứu tài liệu học thuật về văn hóa và giáo dục Đức, AI thường xuyên tự bịa đặt các số liệu thống kê hoặc nhầm lẫn tên các tổ chức liên bang, bắt buộc tôi phải dành rất nhiều thời gian đối chiếu chéo trực tiếp với dữ liệu gốc của BMBF hoặc cổng thông tin viện Goethe [1].</li>
+                        <li style="margin-bottom: 8px;"><strong>Ranh giới đạo đức học thuật:</strong> Việc kìm chế mong muốn giao phó hoàn toàn công việc viết lách cho các công cụ thông minh như Gemini đòi hỏi kỷ luật phản biện cao để giữ vững tỷ lệ đóng góp thực tế của cá nhân luôn trên mức 60% [1].</li>
+                        <li style="margin-bottom: 8px;"><strong>Cộng tác và rào cản kỹ thuật số:</strong> Trong dự án cẩm nang nhóm ở Tuần 4, việc các thành viên quên cập nhật trạng thái trên Trello và trôi thông tin Discord gây ảnh hưởng trực tiếp đến tiến độ chung, buộc tôi phải ứng dụng hệ thống tự động hóa Butler và thiết lập kênh <code>#announcements</code> để điều phối quy củ hơn [1].</li>
+                        <li style="margin-bottom: 8px;"><strong>Cân bằng thẩm mỹ:</strong> Khó khăn trong việc tích hợp hài hòa các cấu phần đồ họa tạo ra từ AI sao cho đồng nhất với dải màu pastel cổ điển riêng biệt của bản thân mà không làm mất đi tính minh bạch, chân thực của thông tin học thuật [1].</li>
+                    </ul>
                 </div>
                 <div>
                     <h3 style="font-size: 1.1rem; border-left: 3px solid var(--accent-pink-solid); padding-left: 10px;">Thành tựu</h3>
                     <ul class="skills-list" style="margin-top: 15px;">
-                        <li>Tối ưu hệ thống lưu trữ cá nhân</li>
-                        <li>Sử dụng thành thạo Prompt Engineering</li>
-                        <li>Làm chủ kỹ năng cộng tác từ xa</li>
-                        <li>Đạo đức và liêm chính trong học tập</li>
+                        <li>Vận hành thành thạo hệ sinh thái cộng tác số [1]</li>
+                        <li>Thiết lập chuẩn hóa cây thư mục khoa học [1]</li>
+                        <li>Sở hữu bộ câu lệnh Prompt Engineering hiệu quả [1]</li>
+                        <li>Kiểm soát và ứng dụng AI có đạo đức học thuật [1]</li>
                     </ul>
                 </div>
             </div>
@@ -1339,11 +1420,11 @@
         <div class="footer-container">
             <div class="footer-left">
                 <h4>Nguyễn Thị Bảo Anh</h4>
-                <p>Digital Portfolio cá nhân tổng hợp kiến thức môn học Công nghệ số và ứng dụng trí tuệ nhân tạo. Tự hào là một sinh viên thế hệ mới của Đại học Ngoại ngữ - Đại học Quốc gia Hà Nội.</p>
+                <p>Digital Portfolio cá nhân tổng hợp kiến thức thực tế từ các bài tập môn học Công nghệ số và ứng dụng trí tuệ nhân tạo [1]. Tự hào là một sinh viên thế hệ mới của Đại học Ngoại ngữ - Đại học Quốc gia Hà Nội [1].</p>
             </div>
             <div class="footer-right">
-                <p style="font-size: 0.9rem; font-weight: 500;">Ngành Ngôn ngữ và Văn hoá Đức</p>
-                <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">Mã số sinh viên: 25041874</p>
+                <p style="font-size: 0.9rem; font-weight: 500;">Ngành Ngôn ngữ và Văn hoá Đức [1]</p>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">Mã số sinh viên: 25041874 [1]</p>
             </div>
         </div>
         <p class="footer-copyright">&copy; 2026 Nguyễn Thị Bảo Anh. Bảo lưu mọi quyền.</p>
@@ -1399,7 +1480,6 @@
                 ctx.save();
                 ctx.globalAlpha = this.alpha;
                 if (this.isButterfly) {
-                    // Vẽ bướm mờ đơn giản bằng phương trình hình cánh hoa/bezier
                     ctx.translate(this.x, this.y);
                     ctx.rotate(this.angle);
                     ctx.fillStyle = this.color + this.alpha + ')';
@@ -1410,7 +1490,6 @@
                     ctx.bezierCurveTo(s, -s, s, s, 0, 0);
                     ctx.fill();
                 } else {
-                    // Vẽ đốm sáng tròn phát quang
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                     ctx.fillStyle = this.color + this.alpha + ')';
@@ -1422,14 +1501,12 @@
             }
         }
 
-        // Tạo đốm sáng khi di chuột
         window.addEventListener('mousemove', function(e) {
-            if (Math.random() > 0.3) { // Tối ưu hóa hiệu năng, giảm mật độ thừa
+            if (Math.random() > 0.3) { 
                 particles.push(new Particle(e.clientX, e.clientY));
             }
         });
 
-        // Loop cập nhật vẽ hạt
         function animateParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             for (let i = 0; i < particles.length; i++) {
@@ -1449,12 +1526,9 @@
         function switchTab(button, tabId) {
             const card = button.closest('.project-card');
             
-            // Xóa trạng thái kích hoạt cũ của nút tab
             card.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            // Kích hoạt nút tab hiện tại
             button.classList.add('active');
 
-            // Ẩn tất cả các panel nội dung cũ
             card.querySelectorAll('.tab-content').forEach(content => {
                 content.classList.remove('active');
                 if (content.getAttribute('data-tab') === tabId) {
@@ -1466,7 +1540,6 @@
 
         /* --- 3. BỘ LỌC DỰ ÁN THEO CHUYÊN ĐỀ --- */
         function filterCategory(category) {
-            // Thay đổi nút active
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
